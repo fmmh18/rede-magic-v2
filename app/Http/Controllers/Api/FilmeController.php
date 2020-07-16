@@ -27,6 +27,7 @@ class FilmeController extends Controller
         if($request->hasFile('cartaz')){
             // Get filename with the extension
             $filenameWithExt = $request->file('cartaz')->getClientOriginalName();
+           
             // Get just filename
             $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
             // Get just ext
@@ -35,9 +36,10 @@ class FilmeController extends Controller
             $fileNameToStore= $filename.'_'.time().'.'.$extension;
             // Upload Image
             $path = $request->file('cartaz')->storeAs('public/cartaz', $fileNameToStore);
+            
         } else {
             $fileNameToStore = 'noimage.png';
-        }
+        } 
 
         $messages = [
             'required' => 'O campo :attribute é obrigatório.',
@@ -57,27 +59,31 @@ class FilmeController extends Controller
         }
         else
         { 
-            $result = Filme::create([
-                'nome' => $request->nome, 
-                'ano' => $request->ano, 
+ 
+            $filme = Filme::create([
+                'nome'=>  $request->nome,
+                'ano' => $request->ano,
                 'cartaz' => $fileNameToStore
             ]);
-            $lastID = $result->id;
-            foreach($request->atores as $ator)
-            {
-                $ator = FilmeElenco::create([
-                    'id_filme'=> $lastID,
-                    'id_ator' => $ator->id
+            
+            $lastID = $filme->id;
+            $atores = array_filter(explode(';',$request->atores));
+            $diretores = array_filter(explode(';',$request->diretores));  
+
+            for($i = 0; $i <= count($atores);$i++){
+                FilmeElenco::create([
+                    'filme_id'=> $lastID,
+                    'ator_id' => $atores[$i]
                 ]);
+            } 
+            for($x = 0; $x <= count($diretores);$x++){
+                FilmeProducao::create([
+                    'filme_id'=> $lastID,
+                    'diretor_id' => $diretores[$x]
+                ]); 
             }
-            foreach($request->diretores as $diretor)
-            {
-                $ator = FilmeProducao::create([
-                    'id_filme'=> $lastID,
-                    'id_diretor' => $diretor->id
-                ]);
-            }
-            return $result->id;
+
+            return  $lastID;
         }
         
     }

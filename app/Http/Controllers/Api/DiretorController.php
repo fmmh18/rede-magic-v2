@@ -22,13 +22,11 @@ class DiretorController extends Controller
         $input = $request->all();
 
         $messages = [
-            'required' => 'O campo :attribute é obrigatório.',
-            'numeric' => 'O campo :attribute é numérico.',
+            'required' => 'O campo :attribute é obrigatório.'
         ];
 
         $rules = [ 
-            'nome' => 'required',
-            'ano' => 'required|numeric'
+            'nome' => 'required'
         ];
             
         $validatedData = Validator::make($input,$rules, $messages);
@@ -61,13 +59,11 @@ class DiretorController extends Controller
         $input = $request->all();
 
         $messages = [
-            'required' => 'O campo :attribute é obrigatório.',
-            'numeric' => 'O campo :attribute é numérico.',
+            'required' => 'O campo :attribute é obrigatório.'
         ];
 
         $rules = [ 
-            'nome' => 'required',
-            'ano' => 'required|numeric'
+            'nome' => 'required'
         ];
             
         $validatedData = Validator::make($input,$rules, $messages);

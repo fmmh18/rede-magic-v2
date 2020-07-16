@@ -7,4 +7,6 @@ use Illuminate\Database\Eloquent\Model;
 class Ator extends Model
 {
     //
+    
+    protected  $fillable = ['nome'];
 }
