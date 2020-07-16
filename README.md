@@ -10,10 +10,14 @@ Foram criados as Models e Controllers de Filmes, Atores e Diretores e Classifica
 Para o desenvolvimento de front-end o usuário podera fazer um selectbox de multipla escolha tanto de atores e/ou diretor.
 A parte de classificação pode ser implentada para a votação na tela de listagem dos filmes. Procurei polir a parte de backend.
 Criei uma validação de campos obrigatórios.
-*Acrescentado o upload de imagem. rodar o comando  php artisan storage:link
+*Acrescentado o upload de imagem
 
 Para se start o projeto é preciso configurar o .env com a base de dados de mysql obedecendo alguns parametros e se atentando ao campo usuario e senha.
 no terminal acessar a pasta do projeto e utilizar o comando "ph artisan migrate" para se criar as tabelas necessárias. e para roda-lo localmente utilizar-se
 o "php artisan serve" para realizar o teste dos metodos implementados.
 Ira em anexo os collections do postman para que se faça mais agil.
 
+<p>Comandos necessários para startar o projeto</p>
+Para criar a base da dados php artisan migrate<br/>
+Para criar o link e a pasta de upload php artisan storage:link<br/>
+Para rodar a aplicação local php artisan serve
