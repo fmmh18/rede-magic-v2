@@ -17,6 +17,7 @@ class CreateFilmesTable extends Migration
             $table->id();
             $table->string('nome');
             $table->integer('ano');
+            $table->string('cartaz');
             $table->timestamps();
         });
     }

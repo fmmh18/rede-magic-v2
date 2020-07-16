@@ -24,6 +24,21 @@ class FilmeController extends Controller
 
         $input = $request->all();
 
+        if($request->hasFile('cartaz')){
+            // Get filename with the extension
+            $filenameWithExt = $request->file('cartaz')->getClientOriginalName();
+            // Get just filename
+            $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
+            // Get just ext
+            $extension = $request->file('cartaz')->getClientOriginalExtension();
+            // Filename to store
+            $fileNameToStore= $filename.'_'.time().'.'.$extension;
+            // Upload Image
+            $path = $request->file('cartaz')->storeAs('public/cartaz', $fileNameToStore);
+        } else {
+            $fileNameToStore = 'noimage.png';
+        }
+
         $messages = [
             'required' => 'O campo :attribute é obrigatório.',
             'numeric' => 'O campo :attribute é numérico.',
@@ -41,9 +56,27 @@ class FilmeController extends Controller
             return $validatedData->messages();
         }
         else
-        {
-            $result = Filme::create($input);
+        { 
+            $result = Filme::create([
+                'nome' => $request->nome, 
+                'ano' => $request->ano, 
+                'cartaz' => $fileNameToStore
+            ]);
             $lastID = $result->id;
+            foreach($request->atores as $ator)
+            {
+                $ator = FilmeElenco::create([
+                    'id_filme'=> $lastID,
+                    'id_ator' => $ator->id
+                ]);
+            }
+            foreach($request->diretores as $diretor)
+            {
+                $ator = FilmeProducao::create([
+                    'id_filme'=> $lastID,
+                    'id_diretor' => $diretor->id
+                ]);
+            }
             return $result->id;
         }
         
