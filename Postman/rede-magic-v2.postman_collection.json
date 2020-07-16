@@ -33,8 +33,38 @@
 					"request": {
 						"method": "PUT",
 						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "nome",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "ano",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "atores",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "diretores",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "cartaz",
+									"type": "file",
+									"src": []
+								}
+							]
+						},
 						"url": {
-							"raw": "localhost:8000/api/filmes/1?nome&ano",
+							"raw": "localhost:8000/api/filmes/1",
 							"host": [
 								"localhost"
 							],
@@ -43,16 +73,6 @@
 								"api",
 								"filmes",
 								"1"
-							],
-							"query": [
-								{
-									"key": "nome",
-									"value": null
-								},
-								{
-									"key": "ano",
-									"value": null
-								}
 							]
 						}
 					},
@@ -83,8 +103,38 @@
 					"request": {
 						"method": "POST",
 						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "nome",
+									"value": "Cidade dos Anjos",
+									"type": "text"
+								},
+								{
+									"key": "ano",
+									"value": "1998",
+									"type": "text"
+								},
+								{
+									"key": "atores",
+									"value": "1;",
+									"type": "text"
+								},
+								{
+									"key": "diretores",
+									"value": "1;",
+									"type": "text"
+								},
+								{
+									"key": "cartaz",
+									"type": "file",
+									"src": "/C:/Users/fmmh1/OneDrive/Documentos/cidade-dos-anjos.jpg"
+								}
+							]
+						},
 						"url": {
-							"raw": "localhost:8000/api/filmes?nome=Cidade dos Anjos&ano=1998",
+							"raw": "localhost:8000/api/filmes",
 							"host": [
 								"localhost"
 							],
@@ -92,16 +142,6 @@
 							"path": [
 								"api",
 								"filmes"
-							],
-							"query": [
-								{
-									"key": "nome",
-									"value": "Cidade dos Anjos"
-								},
-								{
-									"key": "ano",
-									"value": "1998"
-								}
 							]
 						}
 					},
@@ -156,8 +196,18 @@
 					"request": {
 						"method": "POST",
 						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "nome",
+									"value": "Robert Downey Jr",
+									"type": "text"
+								}
+							]
+						},
 						"url": {
-							"raw": "localhost:8000/api/atores?nome=Cidade dos Anjos",
+							"raw": "localhost:8000/api/atores",
 							"host": [
 								"localhost"
 							],
@@ -165,12 +215,6 @@
 							"path": [
 								"api",
 								"atores"
-							],
-							"query": [
-								{
-									"key": "nome",
-									"value": "Cidade dos Anjos"
-								}
 							]
 						}
 					},
@@ -272,8 +316,18 @@
 					"request": {
 						"method": "POST",
 						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "nome",
+									"value": "Brad Silberling",
+									"type": "text"
+								}
+							]
+						},
 						"url": {
-							"raw": "localhost:8000/api/diretores?nome=Cidade dos Anjos",
+							"raw": "localhost:8000/api/diretores",
 							"host": [
 								"localhost"
 							],
@@ -281,12 +335,6 @@
 							"path": [
 								"api",
 								"diretores"
-							],
-							"query": [
-								{
-									"key": "nome",
-									"value": "Cidade dos Anjos"
-								}
 							]
 						}
 					},
@@ -317,8 +365,18 @@
 					"request": {
 						"method": "PUT",
 						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "nome",
+									"value": "",
+									"type": "text"
+								}
+							]
+						},
 						"url": {
-							"raw": "localhost:8000/api/diretores/1?nome",
+							"raw": "localhost:8000/api/diretores/1",
 							"host": [
 								"localhost"
 							],
@@ -327,12 +385,6 @@
 								"api",
 								"diretores",
 								"1"
-							],
-							"query": [
-								{
-									"key": "nome",
-									"value": null
-								}
 							]
 						}
 					},
